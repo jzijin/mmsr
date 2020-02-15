@@ -12,15 +12,20 @@ except ImportError:
 
 def generate_mod_LR_bic():
     # set parameters
-    up_scale = 4
+    up_scale = 8
     mod_scale = 4
     # set data dir
-    sourcedir = '/data/datasets/img'
-    savedir = '/data/datasets/mod'
+    sourcedir = '../../datasets/VAL'
+    savedir = '../../datasets/val_100'
 
-    saveHRpath = os.path.join(savedir, 'HR', 'x' + str(mod_scale))
-    saveLRpath = os.path.join(savedir, 'LR', 'x' + str(up_scale))
-    saveBicpath = os.path.join(savedir, 'Bic', 'x' + str(up_scale))
+    saveHRpath = os.path.join(savedir, 'HR', 'X' + str(mod_scale))
+    saveLRpath = os.path.join(savedir, 'LR', 'X' + str(up_scale))
+    saveBicpath = os.path.join(savedir, 'Bic', 'X' + str(up_scale))
+
+    # print(saveHRpath)
+    # print(saveLRpath)
+    # print(saveBicpath)
+    # exit()
 
     if not os.path.isdir(sourcedir):
         print('Error: No source data found')
@@ -50,7 +55,7 @@ def generate_mod_LR_bic():
     else:
         print('It will cover ' + str(saveBicpath))
 
-    filepaths = [f for f in os.listdir(sourcedir) if f.endswith('.png')]
+    filepaths = [f for f in os.listdir(sourcedir) if f.endswith('.jpg')]
     num_files = len(filepaths)
 
     # prepare data with augementation
@@ -67,10 +72,12 @@ def generate_mod_LR_bic():
             image_HR = image[0:mod_scale * height, 0:mod_scale * width, :]
         else:
             image_HR = image[0:mod_scale * height, 0:mod_scale * width]
+        
+        image_HR = imresize_np(image_HR, 1/up_scale, True)
         # LR
-        image_LR = imresize_np(image_HR, 1 / up_scale, True)
+        image_LR = imresize_np(image_HR, 1 / 4, True)
         # bic
-        image_Bic = imresize_np(image_LR, up_scale, True)
+        image_Bic = imresize_np(image_LR, 4, True)
 
         cv2.imwrite(os.path.join(saveHRpath, filename), image_HR)
         cv2.imwrite(os.path.join(saveLRpath, filename), image_LR)

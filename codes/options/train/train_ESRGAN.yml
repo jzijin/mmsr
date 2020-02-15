@@ -4,7 +4,7 @@ use_tb_logger: true
 model: srgan
 distortion: sr
 scale: 4
-gpu_ids: [2]
+gpu_ids: [0]
 
 #### datasets
 datasets:
@@ -16,7 +16,7 @@ datasets:
 
     use_shuffle: true
     n_workers: 6  # per GPU
-    batch_size: 16
+    batch_size: 4
     GT_size: 128
     use_flip: true
     use_rot: true
@@ -24,8 +24,8 @@ datasets:
   val:
     name: val_set14
     mode: LQGT
-    dataroot_GT: ../datasets/val_set14/Set14
-    dataroot_LQ: ../datasets/val_set14/Set14_bicLRx4
+    dataroot_GT: ../datasets/val_set5/HR/X4
+    dataroot_LQ: ../datasets/val_set5/LR/X8
 
 #### network structures
 network_G:

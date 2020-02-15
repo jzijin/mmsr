@@ -10,28 +10,28 @@ datasets:
   test_1:  # the 1st test dataset
     name: set5
     mode: LQGT
-    dataroot_GT: ../datasets/val_set5/Set5
-    dataroot_LQ: ../datasets/val_set5/Set5_bicLRx4
-  test_2:  # the 2st test dataset
-    name: set14
-    mode: LQGT
-    dataroot_GT: ../datasets/val_set14/Set14
-    dataroot_LQ: ../datasets/val_set14/Set14_bicLRx4
-  test_3:
-    name: bsd100
-    mode: LQGT
-    dataroot_GT: ../datasets/BSD/BSDS100
-    dataroot_LQ: ../datasets/BSD/BSDS100_bicLRx4
-  test_4:
-    name: urban100
-    mode: LQGT
-    dataroot_GT: ../datasets/urban100
-    dataroot_LQ: ../datasets/urban100_bicLRx4
-  test_5:
-    name: div2k100
-    mode: LQGT
-    dataroot_GT: ../datasets/DIV2K100/DIV2K_valid_HR
-    dataroot_LQ: ../datasets/DIV2K100/DIV2K_valid_bicLRx4
+    dataroot_GT: ../datasets/val_100/HR/X4
+    dataroot_LQ: ../datasets/val_100/LR/X8
+  # test_2:  # the 2st test dataset
+  #   name: set14
+  #   mode: LQGT
+  #   dataroot_GT: ../datasets/val_set14/Set14
+  #   dataroot_LQ: ../datasets/val_set14/Set14_bicLRx4
+  # test_3:
+  #   name: bsd100
+  #   mode: LQGT
+  #   dataroot_GT: ../datasets/BSD/BSDS100
+  #   dataroot_LQ: ../datasets/BSD/BSDS100_bicLRx4
+  # test_4:
+  #   name: urban100
+  #   mode: LQGT
+  #   dataroot_GT: ../datasets/urban100
+  #   dataroot_LQ: ../datasets/urban100_bicLRx4
+  # test_5:
+  #   name: div2k100
+  #   mode: LQGT
+  #   dataroot_GT: ../datasets/DIV2K100/DIV2K_valid_HR
+  #   dataroot_LQ: ../datasets/DIV2K100/DIV2K_valid_bicLRx4
 
 
 #### network structures
@@ -45,4 +45,4 @@ network_G:
 
 #### path
 path:
-  pretrain_model_G: ../experiments/pretrained_models/MSRResNetx4.pth
+  pretrain_model_G: ../experiments/pretrained_models/5000_G.pth

@@ -72,7 +72,7 @@ def main():
         # tensorboard logger
         if opt['use_tb_logger'] and 'debug' not in opt['name']:
             version = float(torch.__version__[0:3])
-            if version >= 1.1:  # PyTorch 1.1
+            if version >= 1.5:  # PyTorch 1.5 # i have modify because this way is some bug in my computer
                 from torch.utils.tensorboard import SummaryWriter
             else:
                 logger.info(
