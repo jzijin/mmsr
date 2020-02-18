@@ -1,7 +1,7 @@
 #### general settings
-name: 003_RRDB_ESRGANx4_DIV2K
+name: 004_cascade_div2k
 use_tb_logger: true
-model: srgan
+model: cascade
 distortion: sr
 scale: 4
 gpu_ids: [0]
@@ -29,11 +29,7 @@ datasets:
 
 #### network structures
 network_G:
-  which_model_G: RRDBNet
-  in_nc: 3
-  out_nc: 3
-  nf: 64
-  nb: 23
+  which_model_G: cascade
 network_D:
   which_model_D: discriminator_vgg_128
   in_nc: 3
@@ -41,7 +37,7 @@ network_D:
 
 #### path
 path:
-  pretrain_model_G: ../experiments/pretrained_models/RRDB_PSNR_x4.pth
+  pretrain_model_G: ../experiments/pretrained_models/cascadeX4.pth
   strict_load: true
   resume_state: ~
 

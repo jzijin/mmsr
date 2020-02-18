@@ -1,4 +1,4 @@
-name: RRDB_ESRGAN_x4
+name: FAN_x4
 suffix: ~  # add suffix to saved images
 model: sr
 distortion: sr
@@ -20,13 +20,13 @@ datasets:
 
 #### network structures
 network_G:
-  which_model_G: RRDBNet
-  in_nc: 3
-  out_nc: 3
-  nf: 64
-  nb: 23
-  upscale: 4
+  which_model_G: fan
+  #in_nc: 3
+  #out_nc: 3
+  #nf: 64
+  #nb: 23
+  #upscale: 4
 
 #### path
 path:
-  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/pretrained_models/RRDB_INTER90_x4.pth
+  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/006_fan_pretrain/models/128000_G.pth

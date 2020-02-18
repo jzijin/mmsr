@@ -24,6 +24,10 @@ class SRModel(BaseModel):
 
         # define network and load pretrained models
         self.netG = networks.define_G(opt).to(self.device)
+        # x = torch.randn(1,3,128,128).cuda()
+
+        # print(self.netG.fan(x))
+        # exit()
         if opt['dist']:
             self.netG = DistributedDataParallel(self.netG, device_ids=[torch.cuda.current_device()])
         else:
@@ -47,6 +51,18 @@ class SRModel(BaseModel):
                 raise NotImplementedError('Loss type [{:s}] is not recognized.'.format(loss_type))
             self.l_pix_w = train_opt['pixel_weight']
 
+            # loss
+            loss_type = train_opt['fan_criterion']
+            if loss_type == 'l1':
+                self.cri_fan = nn.L1Loss().to(self.device)
+            elif loss_type == 'l2':
+                self.cri_fan = nn.MSELoss().to(self.device)
+            elif loss_type == 'cb':
+                self.cri_fan = CharbonnierLoss().to(self.device)
+            else:
+                raise NotImplementedError('Loss type [{:s}] is not recognized.'.format(loss_type))
+            self.l_fan_w = train_opt['fan_weight']
+            
             # optimizers
             wd_G = train_opt['weight_decay_G'] if train_opt['weight_decay_G'] else 0
             optim_params = []
@@ -93,8 +109,17 @@ class SRModel(BaseModel):
         # l_pix = self.l_pix_w * self.cri_pix(self.fake_H, self.real_H)+self.l_pix_w * self.cri_pix(_, self.real_H) 
 
 
-        self.fake_H = self.netG(self.var_L)
-        l_pix = self.l_pix_w * self.cri_pix(self.fake_H, self.real_H)
+        self.fake_H, feature_map, fine = self.netG(self.var_L)
+        # use dataparall need to add module in the module
+        # print(self.netG.module.fan(fine))
+        # exit()
+        # print(feature_map.size())
+        # print(self.netG.module.fan(fine)[0].size())
+        # print(type(self.l_fan_w))
+        # print(self.l_fan_w)
+        # exit()
+        l_pix = 0.5*(self.l_pix_w * self.cri_pix(self.fake_H, self.real_H)+self.l_pix_w * self.cri_pix(fine, self.real_H)) + self.l_fan_w * self.cri_fan(self.netG.module.fan(fine)[0], feature_map)
+    
         l_pix.backward()
         self.optimizer_G.step()
 
@@ -104,7 +129,7 @@ class SRModel(BaseModel):
     def test(self):
         self.netG.eval()
         with torch.no_grad():
-            self.fake_H = self.netG(self.var_L)
+            _,_,self.fake_H = self.netG(self.var_L)
         self.netG.train()
 
     def test_x8(self):

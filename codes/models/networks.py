@@ -2,7 +2,12 @@ import torch
 import models.archs.SRResNet_arch as SRResNet_arch
 import models.archs.discriminator_vgg_arch as SRGAN_arch
 import models.archs.RRDBNet_arch as RRDBNet_arch
+import models.archs.ERRDBNet_arch as ERRDBNet_arch
 import models.archs.EDVR_arch as EDVR_arch
+
+
+import models.archs.cascadeNet_arch as cascadeNet_arch
+import models.archs.SuperFAN_arch as SuperFAN_arch
 
 
 # Generator
@@ -24,6 +29,16 @@ def define_G(opt):
                               back_RBs=opt_net['back_RBs'], center=opt_net['center'],
                               predeblur=opt_net['predeblur'], HR_in=opt_net['HR_in'],
                               w_TSA=opt_net['w_TSA'])
+
+    elif which_model == 'cascade':
+        netG = cascadeNet_arch.Generator(scale_factor=opt_net['scale'])
+    
+    elif which_model == 'fan':
+        netG = SuperFAN_arch.Generator()
+    elif which_model == 'ERRDBNet':
+        netG = ERRDBNet_arch.ERRDBNet(in_nc=opt_net['in_nc'], out_nc=opt_net['out_nc'],
+                                    nf=opt_net['nf'], nb=opt_net['nb'])
+
     else:
         raise NotImplementedError('Generator model [{:s}] not recognized'.format(which_model))
 

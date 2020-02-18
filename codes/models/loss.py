@@ -1,6 +1,8 @@
 import torch
 import torch.nn as nn
 
+from .archs.FAN import FAN
+from torch.utils.model_zoo import load_url
 
 class CharbonnierLoss(nn.Module):
     """Charbonnier Loss (L1)"""
@@ -72,3 +74,27 @@ class GradientPenaltyLoss(nn.Module):
 
         loss = ((grad_interp_norm - 1)**2).mean()
         return loss
+
+
+# TODO: add FAN loss 
+class FAN_loss(nn.Module):
+    def __init__(self):
+        super(FAN_loss, self).__init__()
+        FAN_net = FAN(4)
+        FAN_model_url = 'https://www.adrianbulat.com/downloads/python-fan/2DFAN4-11f355bf06.pth.tar'
+        fan_weights = load_url(FAN_model_url, map_location=lambda storage, loc: storage)
+        FAN_net.load_state_dict(fan_weights)
+
+        # may be FAN should be change
+        # for p in FAN_net.parameters():
+            # p.requires_grad = False
+        self.FAN_net = FAN_net
+        self.criterion = nn.MSELoss()
+
+    def forward(self, data, target):
+        # data = self.FAN_net(data)
+        # target = self.FAN_net(target)
+        # print(data[0].size())
+        # print(target[0].size())
+        # exit()
+        return self.criterion(self.FAN_net(data)[0], self.FAN_net(target)[0])

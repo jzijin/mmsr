@@ -7,7 +7,8 @@ import models.networks as networks
 import models.lr_scheduler as lr_scheduler
 from .base_model import BaseModel
 from models.loss import GANLoss
-
+# import .FAN_loss.FAN_loss as FAN_loss
+from models.loss import FAN_loss
 logger = logging.getLogger('base')
 
 
@@ -76,6 +77,10 @@ class SRGANModel(BaseModel):
             # GD gan loss
             self.cri_gan = GANLoss(train_opt['gan_type'], 1.0, 0.0).to(self.device)
             self.l_gan_w = train_opt['gan_weight']
+
+            # FAN loss
+            self.cri_fan = FAN_loss().to(self.device)
+            
             # D_update_ratio and D_init_iters
             self.D_update_ratio = train_opt['D_update_ratio'] if train_opt['D_update_ratio'] else 1
             self.D_init_iters = train_opt['D_init_iters'] if train_opt['D_init_iters'] else 0
@@ -162,6 +167,10 @@ class SRGANModel(BaseModel):
                     self.cri_gan(pred_g_fake - torch.mean(pred_d_real), True)) / 2
             l_g_total += l_g_gan
 
+            # add FAN loss TODO:
+            l_g_FAN = self.opt['train']['fan_weight'] * self.cri_fan(self.fake_H, self.var_H) 
+            l_g_total += l_g_FAN
+
             l_g_total.backward()
             self.optimizer_G.step()
 
@@ -203,6 +212,7 @@ class SRGANModel(BaseModel):
             if self.cri_fea:
                 self.log_dict['l_g_fea'] = l_g_fea.item()
             self.log_dict['l_g_gan'] = l_g_gan.item()
+            self.log_dict['l_g_fan'] = l_g_FAN
 
         self.log_dict['l_d_real'] = l_d_real.item()
         self.log_dict['l_d_fake'] = l_d_fake.item()

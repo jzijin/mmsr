@@ -137,12 +137,12 @@ class SRGANModel(BaseModel):
             p.requires_grad = False
 
         self.optimizer_G.zero_grad()
-        self.fake_H = self.netG(self.var_L)
+        self.fake_mid, self.fake_H = self.netG(self.var_L)
 
         l_g_total = 0
         if step % self.D_update_ratio == 0 and step > self.D_init_iters:
             if self.cri_pix:  # pixel loss
-                l_g_pix = self.l_pix_w * self.cri_pix(self.fake_H, self.var_H)
+                l_g_pix = 1/2 * (self.l_pix_w * self.cri_pix(self.fake_H, self.var_H) + self.l_pix_w * self.cri_pix(self.fake_mid, self.var_H))
                 l_g_total += l_g_pix
             if self.cri_fea:  # feature loss
                 real_fea = self.netF(self.var_H).detach()
@@ -212,7 +212,7 @@ class SRGANModel(BaseModel):
     def test(self):
         self.netG.eval()
         with torch.no_grad():
-            self.fake_H = self.netG(self.var_L)
+            _, self.fake_H = self.netG(self.var_L)
         self.netG.train()
 
     def get_current_log(self):

@@ -174,7 +174,8 @@ def main():
                     logger.info(message)
             #### validation
             if opt['datasets'].get('val', None) and current_step % opt['train']['val_freq'] == 0:
-                if opt['model'] in ['sr', 'srgan'] and rank <= 0:  # image restoration validation
+                # TODO: 标记一下这边需要修改。
+                if opt['model'] in ['sr', 'srgan', 'cascade', 'fan', 'fsr'] and rank <= 0:  # image restoration validation
                     # does not support multi-GPU validation
                     pbar = util.ProgressBar(len(val_loader))
                     avg_psnr = 0.

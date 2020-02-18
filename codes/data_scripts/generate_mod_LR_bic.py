@@ -73,7 +73,7 @@ def generate_mod_LR_bic():
         else:
             image_HR = image[0:mod_scale * height, 0:mod_scale * width]
         
-        image_HR = imresize_np(image_HR, 1/up_scale, True)
+        image_HR = imresize_np(image_HR, 1/2, True)
         # LR
         image_LR = imresize_np(image_HR, 1 / 4, True)
         # bic
