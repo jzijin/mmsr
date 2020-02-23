@@ -42,7 +42,7 @@ network_G:
 path:
   pretrain_model_G: ~
   strict_load: true
-  resume_state: ~
+  resume_state: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/007_FSR/training_state/38000.state
 
 #### training settings: learning rate scheme, loss
 train:

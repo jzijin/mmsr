@@ -30,10 +30,6 @@ datasets:
 #### network structures
 network_G:
   which_model_G: fan
-  in_nc: 3
-  out_nc: 3
-  nf: 64
-  nb: 23
 network_D:
   which_model_D: discriminator_vgg_128
   in_nc: 3
@@ -41,9 +37,9 @@ network_D:
 
 #### path
 path:
-  pretrain_model_G: ../experiments/pretrained_models/FANX4.pth
+  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/pretrained_models/FANX4.pth
   strict_load: true
-  resume_state: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/005_FANx4_DIV2K/training_state/37000.state
+  resume_state: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/005_FANx4_DIV2K/training_state/98000.state
 
 #### training settings: learning rate scheme, loss
 train:
@@ -67,7 +63,7 @@ train:
   feature_criterion: l1
   feature_weight: 1
   gan_type: ragan  # gan | ragan
-  gan_weight: !!float 5e-3
+  gan_weight: !!float 4e-3
   fan_weight: !!float 5e-3
 
   D_update_ratio: 1

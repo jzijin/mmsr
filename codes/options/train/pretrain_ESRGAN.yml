@@ -2,7 +2,7 @@
 # With 16 Residual blocks w/o BN
 
 #### general settings
-name: 006_fan_pretrain
+name: 002_ESRGAN_pretrain
 use_tb_logger: true
 model: sr
 distortion: sr
@@ -19,7 +19,7 @@ datasets:
 
     use_shuffle: true
     n_workers: 6  # per GPU
-    batch_size: 16
+    batch_size: 4
     GT_size: 128
     use_flip: true
     use_rot: true
@@ -32,13 +32,17 @@ datasets:
 
 #### network structures
 network_G:
-  which_model_G: fan
+  which_model_G: RRDBNet
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  nb: 23
 
 #### path
 path:
-  pretrain_model_G: ~
+  pretrain_model_G: /home/jzijin/code/bysj/code/mmsr/experiments/pretrained_models/RRDB_PSNR_x4.pth
   strict_load: true
-  resume_state: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/006_fan_pretrain/training_state/300000.state
+  resume_state: ~
 
 #### training settings: learning rate scheme, loss
 train:
@@ -62,4 +66,4 @@ train:
 #### logger
 logger:
   print_freq: 100
-  save_checkpoint_freq: !!float 1e3
+  save_checkpoint_freq: !!float 5e3

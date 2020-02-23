@@ -12,11 +12,11 @@ except ImportError:
 
 def generate_mod_LR_bic():
     # set parameters
-    up_scale = 8
+    up_scale = 4
     mod_scale = 4
     # set data dir
-    sourcedir = '../../datasets/VAL'
-    savedir = '../../datasets/val_100'
+    sourcedir = '../../datasets/test_celeba_x4'
+    savedir = '../../datasets/tmp'
 
     saveHRpath = os.path.join(savedir, 'HR', 'X' + str(mod_scale))
     saveLRpath = os.path.join(savedir, 'LR', 'X' + str(up_scale))
@@ -72,12 +72,12 @@ def generate_mod_LR_bic():
             image_HR = image[0:mod_scale * height, 0:mod_scale * width, :]
         else:
             image_HR = image[0:mod_scale * height, 0:mod_scale * width]
-        
-        image_HR = imresize_np(image_HR, 1/2, True)
+
+        image_HR = imresize_np(image_HR, 1, True)
         # LR
-        image_LR = imresize_np(image_HR, 1 / 4, True)
+        image_LR = imresize_np(image_HR, 1 / up_scale, True)
         # bic
-        image_Bic = imresize_np(image_LR, 4, True)
+        image_Bic = imresize_np(image_LR, up_scale, True)
 
         cv2.imwrite(os.path.join(saveHRpath, filename), image_HR)
         cv2.imwrite(os.path.join(saveLRpath, filename), image_LR)

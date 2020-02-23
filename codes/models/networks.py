@@ -8,6 +8,7 @@ import models.archs.EDVR_arch as EDVR_arch
 
 import models.archs.cascadeNet_arch as cascadeNet_arch
 import models.archs.SuperFAN_arch as SuperFAN_arch
+import models.archs.SRIncNet_arch as SRIncNet_arch
 
 
 # Generator
@@ -37,6 +38,9 @@ def define_G(opt):
         netG = SuperFAN_arch.Generator()
     elif which_model == 'ERRDBNet':
         netG = ERRDBNet_arch.ERRDBNet(in_nc=opt_net['in_nc'], out_nc=opt_net['out_nc'],
+                                    nf=opt_net['nf'], nb=opt_net['nb'])
+    elif which_model == 'IncNet':
+        netG = SRIncNet_arch.IncNet(in_nc=opt_net['in_nc'], out_nc=opt_net['out_nc'],
                                     nf=opt_net['nf'], nb=opt_net['nb'])
 
     else:

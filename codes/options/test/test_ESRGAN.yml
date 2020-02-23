@@ -7,11 +7,16 @@ crop_border: ~  # crop border when evaluation. If None(~), crop the scale pixels
 gpu_ids: [0]
 
 datasets:
-  test_1:  # the 1st test dataset
-    name: set5
-    mode: LQGT
-    dataroot_GT: ../datasets/val_100/HR/X4
-    dataroot_LQ: ../datasets/val_100/LR/X8
+  #test_1:  # the 1st test dataset
+    #name: set5
+    #mode: LQGT
+    #dataroot_GT: ../datasets/val_100/HR/X4
+    #dataroot_LQ: ../datasets/val_100/LR/X8
+   test_2:  # the 2st test dataset
+     name: celeba
+     mode: LQGT
+     dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/test_celeba_x4/HR/X4
+     dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/test_celeba_x4/LR/X4
   # test_2:  # the 2st test dataset
   #   name: set14
   #   mode: LQGT
@@ -29,4 +34,4 @@ network_G:
 
 #### path
 path:
-  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/pretrained_models/RRDB_INTER90_x4.pth
+  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/pretrained_models/RRDB_PSNR_x4.pth
