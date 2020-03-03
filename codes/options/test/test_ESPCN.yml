@@ -1,4 +1,4 @@
-name: RRDB_ESRGAN_x4
+name: ESPCN
 suffix: ~  # add suffix to saved images
 model: sr
 distortion: sr
@@ -8,30 +8,39 @@ gpu_ids: [0]
 
 datasets:
   test_1:  # the 1st test dataset
-    name: set5
+    name: test_x4
     mode: LQGT
     dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4/HR/X4
     dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4/LR/X8
-  test_2:  # the 2st test dataset
-    name: celeba
-    mode: LQGT
-    dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/test_celeba_x4/HR/X4
-    dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/test_celeba_x4/LR/X4
   # test_2:  # the 2st test dataset
   #   name: set14
   #   mode: LQGT
   #   dataroot_GT: ../datasets/val_set14/Set14
   #   dataroot_LQ: ../datasets/val_set14/Set14_bicLRx4
+  # test_3:
+  #   name: bsd100
+  #   mode: LQGT
+  #   dataroot_GT: ../datasets/BSD/BSDS100
+  #   dataroot_LQ: ../datasets/BSD/BSDS100_bicLRx4
+  # test_4:
+  #   name: urban100
+  #   mode: LQGT
+  #   dataroot_GT: ../datasets/urban100
+  #   dataroot_LQ: ../datasets/urban100_bicLRx4
+  # test_5:
+  #   name: div2k100
+  #   mode: LQGT
+  #   dataroot_GT: ../datasets/DIV2K100/DIV2K_valid_HR
+  #   dataroot_LQ: ../datasets/DIV2K100/DIV2K_valid_bicLRx4
+
 
 #### network structures
 network_G:
-  which_model_G: RRDBNet
+  which_model_G: ESPCN
   in_nc: 3
   out_nc: 3
-  nf: 64
-  nb: 23
   upscale: 4
 
 #### path
 path:
-  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/003_RRDB_ESRGANx4_DIV2K/models/79000_G.pth
+  pretrain_model_G: /home/jzijin/code/bysj/code/mmsr/experiments/010_ESPCN/models/latest_G.pth

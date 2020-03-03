@@ -9,6 +9,9 @@ import models.archs.EDVR_arch as EDVR_arch
 import models.archs.cascadeNet_arch as cascadeNet_arch
 import models.archs.SuperFAN_arch as SuperFAN_arch
 import models.archs.SRIncNet_arch as SRIncNet_arch
+import models.archs.ESPCN_arch as ESPCN_arch
+import models.archs.VDSR_arch as VDSR_arch
+import models.archs.SRCNN_arch as SRCNN_arch
 
 
 # Generator
@@ -33,7 +36,7 @@ def define_G(opt):
 
     elif which_model == 'cascade':
         netG = cascadeNet_arch.Generator(scale_factor=opt_net['scale'])
-    
+
     elif which_model == 'fan':
         netG = SuperFAN_arch.Generator()
     elif which_model == 'ERRDBNet':
@@ -42,7 +45,12 @@ def define_G(opt):
     elif which_model == 'IncNet':
         netG = SRIncNet_arch.IncNet(in_nc=opt_net['in_nc'], out_nc=opt_net['out_nc'],
                                     nf=opt_net['nf'], nb=opt_net['nb'])
-
+    elif which_model == 'ESPCN':
+        netG = ESPCN_arch.ESPCN(upscale_factor=opt_net['upscale'], in_nc=opt_net['in_nc'], out_nc=opt_net['out_nc'])
+    elif which_model == 'VDSR':
+        netG = VDSR_arch.VDSR(in_nc=opt_net['in_nc'], out_nc=opt_net['out_nc'], base_channels=opt_net['base_channels'], num_residuals=opt_net['num_residuals'])
+    elif which_model == 'SRCNN':
+        netG = SRCNN_arch.SRCNN()
     else:
         raise NotImplementedError('Generator model [{:s}] not recognized'.format(which_model))
 

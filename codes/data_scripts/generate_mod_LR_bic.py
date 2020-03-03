@@ -15,8 +15,8 @@ def generate_mod_LR_bic():
     up_scale = 4
     mod_scale = 4
     # set data dir
-    sourcedir = '../../datasets/test_celeba_x4'
-    savedir = '../../datasets/tmp'
+    sourcedir = '/home/jzijin/code/bysj/classical_SR_datasets/urban100'
+    savedir = '../../datasets/urban100'
 
     saveHRpath = os.path.join(savedir, 'HR', 'X' + str(mod_scale))
     saveLRpath = os.path.join(savedir, 'LR', 'X' + str(up_scale))
@@ -55,7 +55,8 @@ def generate_mod_LR_bic():
     else:
         print('It will cover ' + str(saveBicpath))
 
-    filepaths = [f for f in os.listdir(sourcedir) if f.endswith('.jpg')]
+    # filepaths = [f for f in os.listdir(sourcedir) if f.endswith('.jpg')]
+    filepaths = [f for f in os.listdir(sourcedir)]
     num_files = len(filepaths)
 
     # prepare data with augementation

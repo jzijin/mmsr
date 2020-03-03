@@ -1,5 +1,5 @@
 #### general settings
-name: 003_RRDB_ESRGANx4_DIV2K
+name: 009_IncNet_GAN
 use_tb_logger: true
 model: srgan
 distortion: sr
@@ -29,11 +29,12 @@ datasets:
 
 #### network structures
 network_G:
-  which_model_G: RRDBNet
+  which_model_G: IncNet
   in_nc: 3
   out_nc: 3
   nf: 64
-  nb: 23
+  nb: 5
+  upscale: 4
 network_D:
   which_model_D: discriminator_vgg_128
   in_nc: 3
@@ -41,9 +42,9 @@ network_D:
 
 #### path
 path:
-  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/002_ESRGAN_pretrain/models/55000_G.pth
+  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/008_IncNetx4_scratch_DIV2K/models/82000_G.pth
   strict_load: true
-  resume_state: ~
+  resume_state: /home/jzijin/code/bysj/code/mmsr/experiments/009_IncNet_GAN/training_state/260000.state
 
 #### training settings: learning rate scheme, loss
 train:

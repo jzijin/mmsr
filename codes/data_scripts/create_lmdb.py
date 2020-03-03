@@ -32,6 +32,13 @@ def main():
         general_image_folder(opt)
     elif dataset == 'DIV2K_demo':
         opt = {}
+        # bicubic
+        opt['img_folder'] = '../../datasets/DIV2K/DIV2K800_sub_bicBICx4'
+        opt['lmdb_save_path'] = '../../datasets/DIV2K/DIV2K800_sub_bicBICx4.lmdb'
+        opt['name'] = 'DIV2K800_sub_bicBICx4'
+        general_image_folder(opt)
+
+        """
         ## GT
         opt['img_folder'] = '../../datasets/DIV2K/DIV2K800_sub'
         opt['lmdb_save_path'] = '../../datasets/DIV2K/DIV2K800_sub.lmdb'
@@ -40,11 +47,12 @@ def main():
         ## LR
         # opt['img_folder'] = '../../datasets/DIV2K/DIV2K800_sub_bicLRx4
         # opt['lmdb_save_path'] = '../../datasets/DIV2K/DIV2K800_sub_bicLRx4.lmdb'
-        opt['img_folder'] = '../../datasets/DIV2K/DIV2K800_sub_bicLRx8'
+        opt['img_folder'] = '../../datasets/DIV2K/DIV2K800_sub_bicLRx8/'
         opt['lmdb_save_path'] = '../../datasets/DIV2K/DIV2K800_sub_bicLRx8.lmdb'
         # opt['name'] = 'DIV2K800_sub_bicLRx4'
         opt['name'] = 'DIV2K800_sub_bicLRx8'
         general_image_folder(opt)
+        """
     elif dataset == 'test':
         test_lmdb('../../datasets/REDS/train_sharp_wval.lmdb', 'REDS')
 

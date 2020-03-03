@@ -85,6 +85,8 @@ class LQGTDataset(data.Dataset):
                 img_LQ = np.expand_dims(img_LQ, axis=2)
 
         if self.opt['phase'] == 'train':
+            # print("sldjflskjdflkjasdlf")
+            # TODO: here
             # if the image size is too small
             H, W, _ = img_GT.shape
             if H < GT_size or W < GT_size:
@@ -96,18 +98,19 @@ class LQGTDataset(data.Dataset):
 
             H, W, C = img_LQ.shape
             LQ_size = GT_size // scale
-
+            
+            # set the require size not need the random crop
             # randomly crop
-            rnd_h = random.randint(0, max(0, H - LQ_size))
-            rnd_w = random.randint(0, max(0, W - LQ_size))
-            img_LQ = img_LQ[rnd_h:rnd_h + LQ_size, rnd_w:rnd_w + LQ_size, :]
-            rnd_h_GT, rnd_w_GT = int(rnd_h * scale), int(rnd_w * scale)
-            img_GT = img_GT[rnd_h_GT:rnd_h_GT + GT_size, rnd_w_GT:rnd_w_GT + GT_size, :]
+            # rnd_h = random.randint(0, max(0, H - LQ_size))
+            # rnd_w = random.randint(0, max(0, W - LQ_size))
+            # img_LQ = img_LQ[rnd_h:rnd_h + LQ_size, rnd_w:rnd_w + LQ_size, :]
+            # rnd_h_GT, rnd_w_GT = int(rnd_h * scale), int(rnd_w * scale)
+            # img_GT = img_GT[rnd_h_GT:rnd_h_GT + GT_size, rnd_w_GT:rnd_w_GT + GT_size, :]
 
             # augmentation - flip, rotate
             img_LQ, img_GT = util.augment([img_LQ, img_GT], self.opt['use_flip'],
                                           self.opt['use_rot'])
-
+        
         if self.opt['color']:  # change color space if necessary
             img_LQ = util.channel_convert(C, self.opt['color'],
                                           [img_LQ])[0]  # TODO during val no definition
@@ -121,6 +124,7 @@ class LQGTDataset(data.Dataset):
 
         if LQ_path is None:
             LQ_path = GT_path
+        
         return {'LQ': img_LQ, 'GT': img_GT, 'LQ_path': LQ_path, 'GT_path': GT_path}
 
     def __len__(self):
