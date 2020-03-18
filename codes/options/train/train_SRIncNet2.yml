@@ -2,7 +2,7 @@
 # With 16 Residual blocks w/o BN
 
 #### general settings
-name: 008_IncNetx4
+name: 008_IncNetx4_2
 use_tb_logger: true
 model: sr
 distortion: sr
@@ -32,7 +32,7 @@ datasets:
 
 #### network structures
 network_G:
-  which_model_G: IncNet
+  which_model_G: IncNet2
   in_nc: 3
   out_nc: 3
   nf: 64
@@ -43,7 +43,7 @@ network_G:
 path:
   pretrain_model_G: ~
   strict_load: true
-  resume_state: /home/jzijin/code/bysj/code/mmsr/experiments/008_IncNetx4/training_state/407000.state
+  resume_state: ~
 
 #### training settings: learning rate scheme, loss
 train:

@@ -9,6 +9,7 @@ import models.archs.EDVR_arch as EDVR_arch
 import models.archs.cascadeNet_arch as cascadeNet_arch
 import models.archs.SuperFAN_arch as SuperFAN_arch
 import models.archs.SRIncNet_arch as SRIncNet_arch
+import models.archs.SRIncNet2_arch as SRIncNet_arch2
 import models.archs.ESPCN_arch as ESPCN_arch
 import models.archs.VDSR_arch as VDSR_arch
 import models.archs.SRCNN_arch as SRCNN_arch
@@ -44,6 +45,9 @@ def define_G(opt):
                                     nf=opt_net['nf'], nb=opt_net['nb'])
     elif which_model == 'IncNet':
         netG = SRIncNet_arch.IncNet(in_nc=opt_net['in_nc'], out_nc=opt_net['out_nc'],
+                                    nf=opt_net['nf'], nb=opt_net['nb'])
+    elif which_model == 'IncNet2':
+        netG = SRIncNet_arch2.IncNet(in_nc=opt_net['in_nc'], out_nc=opt_net['out_nc'],
                                     nf=opt_net['nf'], nb=opt_net['nb'])
     elif which_model == 'ESPCN':
         netG = ESPCN_arch.ESPCN(upscale_factor=opt_net['upscale'], in_nc=opt_net['in_nc'], out_nc=opt_net['out_nc'])

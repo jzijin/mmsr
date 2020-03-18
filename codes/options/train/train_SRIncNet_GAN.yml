@@ -44,7 +44,7 @@ network_D:
 path:
   pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/008_IncNetx4_scratch_DIV2K/models/82000_G.pth
   strict_load: true
-  resume_state: /home/jzijin/code/bysj/code/mmsr/experiments/009_IncNet_GAN/training_state/260000.state
+  resume_state: /home/jzijin/code/bysj/code/mmsr/experiments/009_IncNet_GAN/training_state/293000.state
 
 #### training settings: learning rate scheme, loss
 train:

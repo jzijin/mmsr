@@ -8,15 +8,15 @@ gpu_ids: [0]
 
 datasets:
   test_1:  # the 1st test dataset
-    name: set5
+    name: test_x4_256
     mode: LQGT
-    dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4/HR/X4
-    dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4/LR/X8
-  test_2:  # the 2st test dataset
-    name: celeba
-    mode: LQGT
-    dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/test_celeba_x4/HR/X4
-    dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/test_celeba_x4/LR/X4
+    dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4_256/HR/X4
+    dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4_256/LR/X4
+  #test_2:  # the 2st test dataset
+    #name: celeba
+    #mode: LQGT
+    #dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/test_celeba_x4/HR/X4
+    #dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/test_celeba_x4/LR/X4
   # test_2:  # the 2st test dataset
   #   name: set14
   #   mode: LQGT

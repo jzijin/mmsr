@@ -29,4 +29,4 @@ network_G:
 
 #### path
 path:
-  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/pretrained_models/cascadeX4.pth
+  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/000_cascade_pretrain_archived_200216-104427/models/3000_G.pth

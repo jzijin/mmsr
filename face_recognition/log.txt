@@ -1,0 +1,289 @@
+ResNet(
+  (conv1): Conv2d(6, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer4): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=512, out_features=512, bias=True)
+)
+ArcMarginProduct()
+Wed Mar 18 22:47:42 2020 train epoch 0 iter 0 16.770977196482907 iters/s loss 23.585779190063477 acc 0.0
+Wed Mar 18 22:47:44 2020 train epoch 0 iter 10 5.332579994662721 iters/s loss 27.20244026184082 acc 0.0
+Wed Mar 18 22:47:46 2020 train epoch 0 iter 20 5.381505565297476 iters/s loss 26.908464431762695 acc 0.0
+Wed Mar 18 22:47:48 2020 train epoch 0 iter 30 5.303794745627879 iters/s loss 27.30508041381836 acc 0.0
+Wed Mar 18 22:47:50 2020 train epoch 0 iter 40 5.384826724881232 iters/s loss 26.323287963867188 acc 0.0
+Wed Mar 18 22:47:52 2020 train epoch 0 iter 50 5.383685585770952 iters/s loss 26.718807220458984 acc 0.0
+Wed Mar 18 22:47:54 2020 train epoch 0 iter 60 5.350095922282542 iters/s loss 26.531513214111328 acc 0.0
+Wed Mar 18 22:47:55 2020 train epoch 0 iter 70 5.337573219286713 iters/s loss 26.939281463623047 acc 0.0
+Wed Mar 18 22:47:57 2020 train epoch 0 iter 80 5.366125137565757 iters/s loss 26.783626556396484 acc 0.0
+Wed Mar 18 22:47:59 2020 train epoch 0 iter 90 5.1152194677435245 iters/s loss 26.39478302001953 acc 0.0
+total time is 85.4191460609436, average time is 0.022181029878198807
+lfw face verification accuracy:  0.5355 threshold:  0.7970323
+Wed Mar 18 22:49:28 2020 train epoch 1 iter 6 0.11328507467039897 iters/s loss 26.32935333251953 acc 0.0
+Wed Mar 18 22:49:29 2020 train epoch 1 iter 16 5.409883091019781 iters/s loss 26.012529373168945 acc 0.0
+Wed Mar 18 22:49:31 2020 train epoch 1 iter 26 5.414853024635924 iters/s loss 26.306182861328125 acc 0.0
+Wed Mar 18 22:49:33 2020 train epoch 1 iter 36 5.413062629267189 iters/s loss 26.44917869567871 acc 0.0
+Wed Mar 18 22:49:35 2020 train epoch 1 iter 46 5.409740050778739 iters/s loss 25.30329704284668 acc 0.0
+Wed Mar 18 22:49:37 2020 train epoch 1 iter 56 5.358391515702948 iters/s loss 25.83651351928711 acc 0.0
+Wed Mar 18 22:49:39 2020 train epoch 1 iter 66 5.4008577908100905 iters/s loss 26.07991600036621 acc 0.0
+Wed Mar 18 22:49:41 2020 train epoch 1 iter 76 5.412470982986536 iters/s loss 25.484663009643555 acc 0.0
+Wed Mar 18 22:49:42 2020 train epoch 1 iter 86 5.390840374185118 iters/s loss 25.271326065063477 acc 0.0
+total time is 90.0484983921051, average time is 0.02338314681695796
+lfw face verification accuracy:  0.5663333333333334 threshold:  0.84270793
+Wed Mar 18 22:51:20 2020 train epoch 2 iter 2 0.10226586693045349 iters/s loss 24.799293518066406 acc 0.0
+Wed Mar 18 22:51:47 2020 train epoch 2 iter 12 0.37407593041165116 iters/s loss 24.97468376159668 acc 0.0
+Wed Mar 18 22:52:04 2020 train epoch 2 iter 22 0.599635987005855 iters/s loss 24.289588928222656 acc 0.0
+Wed Mar 18 22:52:22 2020 train epoch 2 iter 32 0.5374461117663119 iters/s loss 24.653940200805664 acc 0.0
+Wed Mar 18 22:52:36 2020 train epoch 2 iter 42 0.7101563039954385 iters/s loss 23.999462127685547 acc 0.0
+Wed Mar 18 22:52:54 2020 train epoch 2 iter 52 0.5727376145011569 iters/s loss 23.956974029541016 acc 0.0
+Wed Mar 18 22:53:06 2020 train epoch 2 iter 62 0.8335094194741501 iters/s loss 24.493600845336914 acc 0.0
+Wed Mar 18 22:53:25 2020 train epoch 2 iter 72 0.5225857487788932 iters/s loss 24.2125301361084 acc 0.0
+Wed Mar 18 22:53:36 2020 train epoch 2 iter 82 0.8856817642008799 iters/s loss 23.920507431030273 acc 0.0
+Wed Mar 18 22:53:49 2020 train epoch 2 iter 92 0.794416983002527 iters/s loss 24.15618133544922 acc 0.0
+total time is 248.069477558136, average time is 0.06441689887253596
+lfw face verification accuracy:  0.5646666666666667 threshold:  0.677879
+Wed Mar 18 22:58:23 2020 train epoch 3 iter 8 0.03639885996029415 iters/s loss 23.262161254882812 acc 0.0
+Wed Mar 18 22:58:36 2020 train epoch 3 iter 18 0.8035639482201304 iters/s loss 23.27557945251465 acc 0.0
+Wed Mar 18 22:58:53 2020 train epoch 3 iter 28 0.5806728829787916 iters/s loss 22.836292266845703 acc 0.0
+Wed Mar 18 22:59:06 2020 train epoch 3 iter 38 0.7804566676610535 iters/s loss 23.501903533935547 acc 0.0
+Wed Mar 18 22:59:24 2020 train epoch 3 iter 48 0.5634682733528513 iters/s loss 22.961729049682617 acc 0.0
+Wed Mar 18 22:59:36 2020 train epoch 3 iter 58 0.8513803480175988 iters/s loss 23.466684341430664 acc 0.0
+Wed Mar 18 22:59:52 2020 train epoch 3 iter 68 0.6180334360735766 iters/s loss 23.076595306396484 acc 0.0
+Wed Mar 18 23:00:04 2020 train epoch 3 iter 78 0.8278334295647906 iters/s loss 23.582300186157227 acc 0.0
+Wed Mar 18 23:00:21 2020 train epoch 3 iter 88 0.597022590557165 iters/s loss 23.080245971679688 acc 0.0
+total time is 245.8090136051178, average time is 0.06382991784085115
+lfw face verification accuracy:  0.5671666666666667 threshold:  0.7593904
+Wed Mar 18 23:04:39 2020 train epoch 4 iter 4 0.03862437314211491 iters/s loss 22.384559631347656 acc 0.0
+Wed Mar 18 23:04:53 2020 train epoch 4 iter 14 0.7631439192390976 iters/s loss 22.373109817504883 acc 0.0
+Wed Mar 18 23:05:09 2020 train epoch 4 iter 24 0.59869826964903 iters/s loss 22.127002716064453 acc 0.0
+Wed Mar 18 23:05:23 2020 train epoch 4 iter 34 0.719256783446879 iters/s loss 22.224042892456055 acc 0.0
+Wed Mar 18 23:05:37 2020 train epoch 4 iter 44 0.7183672138358939 iters/s loss 22.697574615478516 acc 0.0
+Wed Mar 18 23:05:49 2020 train epoch 4 iter 54 0.8474352173236985 iters/s loss 22.245933532714844 acc 0.0
+Wed Mar 18 23:06:04 2020 train epoch 4 iter 64 0.64283354466321 iters/s loss 22.28750228881836 acc 0.0
+Wed Mar 18 23:06:15 2020 train epoch 4 iter 74 0.9221528144025168 iters/s loss 22.25379180908203 acc 0.0
+Wed Mar 18 23:06:31 2020 train epoch 4 iter 84 0.6475050154844989 iters/s loss 22.73269271850586 acc 0.0
+total time is 148.45839881896973, average time is 0.038550609924427354
+lfw face verification accuracy:  0.574 threshold:  0.8544637
+Wed Mar 18 23:09:07 2020 train epoch 5 iter 0 0.06387122068436847 iters/s loss 20.944866180419922 acc 0.0
+Wed Mar 18 23:09:13 2020 train epoch 5 iter 10 1.8117489146384707 iters/s loss 21.17229461669922 acc 0.0
+Wed Mar 18 23:09:17 2020 train epoch 5 iter 20 2.462746755915683 iters/s loss 21.62108039855957 acc 0.0
+Wed Mar 18 23:09:24 2020 train epoch 5 iter 30 1.4674379218862508 iters/s loss 21.817005157470703 acc 0.0
+Wed Mar 18 23:09:30 2020 train epoch 5 iter 40 1.5572436972493622 iters/s loss 21.585737228393555 acc 0.0
+Wed Mar 18 23:09:35 2020 train epoch 5 iter 50 2.0524582841420087 iters/s loss 21.560874938964844 acc 0.0
+Wed Mar 18 23:09:40 2020 train epoch 5 iter 60 2.075832268478208 iters/s loss 21.648441314697266 acc 0.0
+Wed Mar 18 23:09:46 2020 train epoch 5 iter 70 1.5846993069653292 iters/s loss 22.01728630065918 acc 0.0
+Wed Mar 18 23:09:55 2020 train epoch 5 iter 80 1.147644236919097 iters/s loss 21.63225746154785 acc 0.0
+Wed Mar 18 23:10:03 2020 train epoch 5 iter 90 1.161276843478509 iters/s loss 22.037214279174805 acc 0.0
+total time is 105.35327339172363, average time is 0.027357380782062745
+lfw face verification accuracy:  0.5728333333333333 threshold:  0.67965287
+Wed Mar 18 23:11:52 2020 train epoch 6 iter 6 0.09211398766885588 iters/s loss 20.522443771362305 acc 0.0
+Wed Mar 18 23:11:55 2020 train epoch 6 iter 16 3.781187010138959 iters/s loss 20.620426177978516 acc 0.0
+Wed Mar 18 23:11:59 2020 train epoch 6 iter 26 2.424078217727709 iters/s loss 20.525657653808594 acc 0.0
+Wed Mar 18 23:12:01 2020 train epoch 6 iter 36 5.244221209574349 iters/s loss 21.01227569580078 acc 0.0
+Wed Mar 18 23:12:03 2020 train epoch 6 iter 46 5.371691827090678 iters/s loss 20.765369415283203 acc 0.0
+Wed Mar 18 23:12:04 2020 train epoch 6 iter 56 5.371648486051567 iters/s loss 20.975143432617188 acc 0.0
+Wed Mar 18 23:12:06 2020 train epoch 6 iter 66 5.426773688239828 iters/s loss 21.23561668395996 acc 0.0
+Wed Mar 18 23:12:08 2020 train epoch 6 iter 76 5.407534002852867 iters/s loss 20.91861915588379 acc 0.0
+Wed Mar 18 23:12:10 2020 train epoch 6 iter 86 4.504402858166162 iters/s loss 20.79331398010254 acc 0.0
+total time is 98.71937489509583, average time is 0.02563473770321886
+lfw face verification accuracy:  0.5773333333333334 threshold:  0.7210665
+Wed Mar 18 23:13:51 2020 train epoch 7 iter 2 0.09889201089239419 iters/s loss 18.940080642700195 acc 0.0
+Wed Mar 18 23:13:53 2020 train epoch 7 iter 12 5.4239742978634915 iters/s loss 19.321670532226562 acc 0.0
+Wed Mar 18 23:13:55 2020 train epoch 7 iter 22 5.438766700562484 iters/s loss 20.041677474975586 acc 0.0
+Wed Mar 18 23:13:57 2020 train epoch 7 iter 32 5.426185358977468 iters/s loss 19.46938705444336 acc 0.0
+Wed Mar 18 23:13:59 2020 train epoch 7 iter 42 5.437956493018619 iters/s loss 19.68834114074707 acc 0.0
+Wed Mar 18 23:14:01 2020 train epoch 7 iter 52 5.430207215877945 iters/s loss 19.83757972717285 acc 0.0
+Wed Mar 18 23:14:03 2020 train epoch 7 iter 62 5.427932466091793 iters/s loss 20.131752014160156 acc 0.0
+Wed Mar 18 23:14:04 2020 train epoch 7 iter 72 5.402778609690419 iters/s loss 20.121065139770508 acc 0.0
+Wed Mar 18 23:14:06 2020 train epoch 7 iter 82 5.422043988282305 iters/s loss 20.328983306884766 acc 0.0
+Wed Mar 18 23:14:08 2020 train epoch 7 iter 92 5.42134876845164 iters/s loss 19.859989166259766 acc 0.0
+total time is 82.55968832969666, average time is 0.021438506447597157
+lfw face verification accuracy:  0.583 threshold:  0.65101874
+Wed Mar 18 23:15:33 2020 train epoch 8 iter 8 0.11777859300141583 iters/s loss 18.706056594848633 acc 0.0
+Wed Mar 18 23:15:35 2020 train epoch 8 iter 18 5.438988862292423 iters/s loss 18.77451515197754 acc 0.0
+Wed Mar 18 23:15:37 2020 train epoch 8 iter 28 5.440871265006876 iters/s loss 19.613388061523438 acc 0.0
+Wed Mar 18 23:15:38 2020 train epoch 8 iter 38 5.418028610904717 iters/s loss 18.957857131958008 acc 0.0
+Wed Mar 18 23:15:40 2020 train epoch 8 iter 48 5.417503752841271 iters/s loss 19.099035263061523 acc 0.0
+Wed Mar 18 23:15:42 2020 train epoch 8 iter 58 5.441743058323369 iters/s loss 18.56905174255371 acc 0.0
+Wed Mar 18 23:15:44 2020 train epoch 8 iter 68 5.4152717929848 iters/s loss 19.23263931274414 acc 0.0
+Wed Mar 18 23:15:46 2020 train epoch 8 iter 78 5.428777632468623 iters/s loss 19.005102157592773 acc 0.0
+Wed Mar 18 23:15:48 2020 train epoch 8 iter 88 5.442451993370915 iters/s loss 19.024534225463867 acc 0.0
+total time is 85.18027114868164, average time is 0.022119000557954203
+lfw face verification accuracy:  0.589 threshold:  0.69699603
+Wed Mar 18 23:17:15 2020 train epoch 9 iter 4 0.11416718064940239 iters/s loss 16.080663681030273 acc 0.0
+Wed Mar 18 23:17:17 2020 train epoch 9 iter 14 5.388203900345236 iters/s loss 15.703197479248047 acc 0.0
+Wed Mar 18 23:17:19 2020 train epoch 9 iter 24 5.420078630672578 iters/s loss 15.615915298461914 acc 0.0
+Wed Mar 18 23:17:21 2020 train epoch 9 iter 34 5.422476488144719 iters/s loss 15.858536720275879 acc 0.0
+Wed Mar 18 23:17:23 2020 train epoch 9 iter 44 5.423720397348595 iters/s loss 16.127147674560547 acc 0.0
+Wed Mar 18 23:17:25 2020 train epoch 9 iter 54 5.394267417951088 iters/s loss 16.12450408935547 acc 0.0
+Wed Mar 18 23:17:26 2020 train epoch 9 iter 64 5.388516790423987 iters/s loss 16.24129295349121 acc 0.0
+Wed Mar 18 23:17:28 2020 train epoch 9 iter 74 5.393020337953542 iters/s loss 15.786566734313965 acc 0.0
+Wed Mar 18 23:17:30 2020 train epoch 9 iter 84 5.430650159929731 iters/s loss 15.28369140625 acc 0.0
+total time is 95.07074475288391, average time is 0.02468728765330665
+lfw face verification accuracy:  0.5928333333333333 threshold:  0.6094752
+Wed Mar 18 23:19:07 2020 train epoch 10 iter 0 0.10279536260938285 iters/s loss 14.784371376037598 acc 0.0
+Wed Mar 18 23:19:09 2020 train epoch 10 iter 10 5.331890581365313 iters/s loss 15.558167457580566 acc 0.0
+Wed Mar 18 23:19:11 2020 train epoch 10 iter 20 5.437989629932343 iters/s loss 15.54620361328125 acc 0.0
+Wed Mar 18 23:19:13 2020 train epoch 10 iter 30 5.436002129659343 iters/s loss 15.465239524841309 acc 0.0
+Wed Mar 18 23:19:15 2020 train epoch 10 iter 40 5.411972340296775 iters/s loss 15.45490837097168 acc 0.0
+Wed Mar 18 23:19:17 2020 train epoch 10 iter 50 5.4290847115292635 iters/s loss 15.464415550231934 acc 0.0
+Wed Mar 18 23:19:18 2020 train epoch 10 iter 60 5.437210666790423 iters/s loss 15.170997619628906 acc 0.0
+Wed Mar 18 23:19:20 2020 train epoch 10 iter 70 5.3655176242688025 iters/s loss 15.46422290802002 acc 0.0
+Wed Mar 18 23:19:22 2020 train epoch 10 iter 80 5.414730692184543 iters/s loss 15.869303703308105 acc 0.0
+Wed Mar 18 23:19:24 2020 train epoch 10 iter 90 5.426144644011071 iters/s loss 15.323354721069336 acc 0.0
+total time is 81.54797458648682, average time is 0.02117579189469925
+lfw face verification accuracy:  0.5923333333333334 threshold:  0.56161654
+Wed Mar 18 23:20:48 2020 train epoch 11 iter 6 0.1185006694703671 iters/s loss 14.769011497497559 acc 0.0
+Wed Mar 18 23:20:50 2020 train epoch 11 iter 16 5.442113037236718 iters/s loss 14.657610893249512 acc 0.0
+Wed Mar 18 23:20:52 2020 train epoch 11 iter 26 5.426245028566579 iters/s loss 15.146688461303711 acc 0.0
+Wed Mar 18 23:20:54 2020 train epoch 11 iter 36 5.41709373450157 iters/s loss 14.605805397033691 acc 0.0
+Wed Mar 18 23:20:56 2020 train epoch 11 iter 46 5.403203865084796 iters/s loss 14.992610931396484 acc 0.0
+Wed Mar 18 23:20:58 2020 train epoch 11 iter 56 5.39957360106274 iters/s loss 14.461238861083984 acc 0.0
+Wed Mar 18 23:20:59 2020 train epoch 11 iter 66 5.408041590163596 iters/s loss 14.733200073242188 acc 0.0
+Wed Mar 18 23:21:01 2020 train epoch 11 iter 76 5.433793622012602 iters/s loss 14.962626457214355 acc 0.0
+Wed Mar 18 23:21:03 2020 train epoch 11 iter 86 5.4316143403391415 iters/s loss 14.379755020141602 acc 0.0
+total time is 81.36472678184509, average time is 0.021128207421928096
+lfw face verification accuracy:  0.5961666666666666 threshold:  0.5586708
+Wed Mar 18 23:22:27 2020 train epoch 12 iter 2 0.11933996172583317 iters/s loss 14.210492134094238 acc 0.0
+Wed Mar 18 23:22:29 2020 train epoch 12 iter 12 5.360084957706449 iters/s loss 14.856734275817871 acc 0.0
+Wed Mar 18 23:22:31 2020 train epoch 12 iter 22 5.4227667293286546 iters/s loss 15.222728729248047 acc 0.0
+Wed Mar 18 23:22:32 2020 train epoch 12 iter 32 5.41518509772642 iters/s loss 14.303372383117676 acc 0.0
+Wed Mar 18 23:22:34 2020 train epoch 12 iter 42 5.439630059338769 iters/s loss 14.674826622009277 acc 0.0
+Wed Mar 18 23:22:36 2020 train epoch 12 iter 52 5.413255448677823 iters/s loss 14.100285530090332 acc 0.0
+Wed Mar 18 23:22:38 2020 train epoch 12 iter 62 5.433125648569607 iters/s loss 15.102144241333008 acc 0.0
+Wed Mar 18 23:22:40 2020 train epoch 12 iter 72 5.441829900000324 iters/s loss 13.947040557861328 acc 0.0
+Wed Mar 18 23:22:42 2020 train epoch 12 iter 82 5.434402613403188 iters/s loss 14.23735523223877 acc 0.0
+Wed Mar 18 23:22:44 2020 train epoch 12 iter 92 5.439444526939445 iters/s loss 14.613570213317871 acc 0.0
+total time is 82.70152568817139, average time is 0.021475337753355334
+lfw face verification accuracy:  0.5971666666666666 threshold:  0.5683114
+Wed Mar 18 23:24:09 2020 train epoch 13 iter 8 0.11747977472754405 iters/s loss 14.0513277053833 acc 0.0
+Wed Mar 18 23:24:10 2020 train epoch 13 iter 18 5.442703413108879 iters/s loss 14.822379112243652 acc 0.0
+Wed Mar 18 23:24:12 2020 train epoch 13 iter 28 5.418743281161362 iters/s loss 13.502071380615234 acc 0.0
+Wed Mar 18 23:24:14 2020 train epoch 13 iter 38 5.415502527761477 iters/s loss 14.40043830871582 acc 0.0
+Wed Mar 18 23:24:16 2020 train epoch 13 iter 48 5.441412661667261 iters/s loss 13.291178703308105 acc 0.0
+Wed Mar 18 23:24:18 2020 train epoch 13 iter 58 5.421652204373976 iters/s loss 14.117773056030273 acc 0.0
+Wed Mar 18 23:24:20 2020 train epoch 13 iter 68 5.437460192677488 iters/s loss 14.407593727111816 acc 0.0
+Wed Mar 18 23:24:22 2020 train epoch 13 iter 78 5.437742875374774 iters/s loss 14.14521312713623 acc 0.0
+Wed Mar 18 23:24:23 2020 train epoch 13 iter 88 5.39334002929989 iters/s loss 13.44599437713623 acc 0.0
+total time is 86.61613249778748, average time is 0.02249185471248701
+lfw face verification accuracy:  0.5988333333333333 threshold:  0.5916665
+Wed Mar 18 23:25:52 2020 train epoch 14 iter 4 0.11243828714030947 iters/s loss 12.990138053894043 acc 0.0
+Wed Mar 18 23:25:54 2020 train epoch 14 iter 14 5.4417988343665815 iters/s loss 13.384596824645996 acc 0.0
+Wed Mar 18 23:25:56 2020 train epoch 14 iter 24 5.439700607298423 iters/s loss 13.553932189941406 acc 0.0
+Wed Mar 18 23:25:58 2020 train epoch 14 iter 34 5.399032157826704 iters/s loss 13.30362319946289 acc 0.0
+Wed Mar 18 23:26:00 2020 train epoch 14 iter 44 5.431271809624541 iters/s loss 13.64981746673584 acc 0.0
+Wed Mar 18 23:26:02 2020 train epoch 14 iter 54 5.4397196555612695 iters/s loss 12.764866828918457 acc 0.0
+Wed Mar 18 23:26:03 2020 train epoch 14 iter 64 5.437221239456587 iters/s loss 13.579670906066895 acc 0.0
+Wed Mar 18 23:26:05 2020 train epoch 14 iter 74 5.435973244093408 iters/s loss 13.168829917907715 acc 0.0
+Wed Mar 18 23:26:07 2020 train epoch 14 iter 84 5.438585458245415 iters/s loss 13.310500144958496 acc 0.0
+total time is 84.43935871124268, average time is 0.021926605741688567
+lfw face verification accuracy:  0.6021666666666666 threshold:  0.5659475
+Wed Mar 18 23:27:34 2020 train epoch 15 iter 0 0.11528238870092833 iters/s loss 12.804671287536621 acc 0.0
+Wed Mar 18 23:27:36 2020 train epoch 15 iter 10 5.37299857819292 iters/s loss 12.233142852783203 acc 0.0
+Wed Mar 18 23:27:38 2020 train epoch 15 iter 20 5.426894458952349 iters/s loss 12.38036823272705 acc 0.0
+Wed Mar 18 23:27:39 2020 train epoch 15 iter 30 5.4384049331600535 iters/s loss 13.127942085266113 acc 0.0
+Wed Mar 18 23:27:41 2020 train epoch 15 iter 40 5.436815983339713 iters/s loss 12.12720775604248 acc 0.0
+Wed Mar 18 23:27:43 2020 train epoch 15 iter 50 5.421912920099929 iters/s loss 13.217381477355957 acc 0.0
+Wed Mar 18 23:27:45 2020 train epoch 15 iter 60 5.442677281324107 iters/s loss 13.443102836608887 acc 0.0
+Wed Mar 18 23:27:47 2020 train epoch 15 iter 70 5.4395969024298605 iters/s loss 13.115582466125488 acc 0.0
+Wed Mar 18 23:27:49 2020 train epoch 15 iter 80 5.440698351356989 iters/s loss 13.134214401245117 acc 0.0
+Wed Mar 18 23:27:50 2020 train epoch 15 iter 90 5.4078240410768865 iters/s loss 13.967636108398438 acc 0.0
+total time is 83.48127698898315, average time is 0.02167781796649783
+lfw face verification accuracy:  0.6005 threshold:  0.5847097
+Wed Mar 18 23:29:16 2020 train epoch 16 iter 6 0.11645505142079927 iters/s loss 12.845181465148926 acc 0.0
+Wed Mar 18 23:29:18 2020 train epoch 16 iter 16 5.411484960477993 iters/s loss 11.578393936157227 acc 0.0
+Wed Mar 18 23:29:20 2020 train epoch 16 iter 26 5.425343104796863 iters/s loss 12.547183990478516 acc 0.0
+Wed Mar 18 23:29:22 2020 train epoch 16 iter 36 5.436909010705942 iters/s loss 12.007737159729004 acc 0.0
+Wed Mar 18 23:29:24 2020 train epoch 16 iter 46 5.437809144399281 iters/s loss 12.353983879089355 acc 0.0
+Wed Mar 18 23:29:25 2020 train epoch 16 iter 56 5.422285815195934 iters/s loss 12.449986457824707 acc 0.0
+Wed Mar 18 23:29:27 2020 train epoch 16 iter 66 5.421636786487272 iters/s loss 12.468730926513672 acc 0.0
+Wed Mar 18 23:29:29 2020 train epoch 16 iter 76 5.417244860319091 iters/s loss 11.734391212463379 acc 0.0
+Wed Mar 18 23:29:31 2020 train epoch 16 iter 86 5.439362699180822 iters/s loss 12.222617149353027 acc 0.0
+total time is 84.15018486976624, average time is 0.02185151515704135
+lfw face verification accuracy:  0.5978333333333333 threshold:  0.6030509
+Wed Mar 18 23:30:58 2020 train epoch 17 iter 2 0.11553195392834781 iters/s loss 10.969545364379883 acc 0.0
+Wed Mar 18 23:30:59 2020 train epoch 17 iter 12 5.440553676952338 iters/s loss 11.68773365020752 acc 0.0
+Wed Mar 18 23:31:01 2020 train epoch 17 iter 22 5.434538511034009 iters/s loss 11.716530799865723 acc 0.0
+Wed Mar 18 23:31:03 2020 train epoch 17 iter 32 5.42619799478093 iters/s loss 11.63194751739502 acc 0.0
+Wed Mar 18 23:31:05 2020 train epoch 17 iter 42 5.428219779082032 iters/s loss 11.593289375305176 acc 0.0
+Wed Mar 18 23:31:07 2020 train epoch 17 iter 52 5.44108795191226 iters/s loss 11.569098472595215 acc 0.0
+Wed Mar 18 23:31:09 2020 train epoch 17 iter 62 5.441380188947767 iters/s loss 11.530616760253906 acc 0.0
+Wed Mar 18 23:31:10 2020 train epoch 17 iter 72 5.423928706241062 iters/s loss 11.715415000915527 acc 0.0
+Wed Mar 18 23:31:12 2020 train epoch 17 iter 82 5.419944155619948 iters/s loss 11.65677261352539 acc 0.0
+Wed Mar 18 23:31:14 2020 train epoch 17 iter 92 5.44479830327769 iters/s loss 11.66444206237793 acc 0.0

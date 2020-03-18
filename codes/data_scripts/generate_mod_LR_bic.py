@@ -15,8 +15,8 @@ def generate_mod_LR_bic():
     up_scale = 4
     mod_scale = 4
     # set data dir
-    sourcedir = '/home/jzijin/code/bysj/classical_SR_datasets/urban100'
-    savedir = '../../datasets/urban100'
+    sourcedir = '/home/jzijin/code/bysj/code/mmsr/datasets/test'
+    savedir = '../../datasets/test_x4_128'
 
     saveHRpath = os.path.join(savedir, 'HR', 'X' + str(mod_scale))
     saveLRpath = os.path.join(savedir, 'LR', 'X' + str(up_scale))
@@ -74,7 +74,7 @@ def generate_mod_LR_bic():
         else:
             image_HR = image[0:mod_scale * height, 0:mod_scale * width]
 
-        image_HR = imresize_np(image_HR, 1, True)
+        image_HR = imresize_np(image_HR, 1 / 8, True)
         # LR
         image_LR = imresize_np(image_HR, 1 / up_scale, True)
         # bic
