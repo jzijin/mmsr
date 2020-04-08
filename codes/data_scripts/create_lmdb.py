@@ -33,10 +33,11 @@ def main():
     elif dataset == 'DIV2K_demo':
         opt = {}
         # bicubic
-        opt['img_folder'] = '../../datasets/DIV2K/DIV2K800_sub_bicBICx4'
-        opt['lmdb_save_path'] = '../../datasets/DIV2K/DIV2K800_sub_bicBICx4.lmdb'
-        opt['name'] = 'DIV2K800_sub_bicBICx4'
+        opt['img_folder'] = '/home/jzijin/code/bysj/CelebA/Img/img_align_celeba'
+        opt['lmdb_save_path'] = '/home/jzijin/windows/f/celeba_bak/img_align_celeba.lmdb'
+        opt['name'] = 'celeba'
         general_image_folder(opt)
+        exit()
 
         """
         ## GT
@@ -89,6 +90,9 @@ def general_image_folder(opt):
     keys = []
     for img_path in all_img_list:
         keys.append(osp.splitext(osp.basename(img_path))[0])
+    # print(all_img_list)
+    # print(type(keys[0]))
+    # exit()
 
     if read_all_imgs:
         #### read all images to memory (multiprocessing)
@@ -114,6 +118,7 @@ def general_image_folder(opt):
     print('data size per image is: ', data_size_per_img)
     data_size = data_size_per_img * len(all_img_list)
     env = lmdb.open(lmdb_save_path, map_size=data_size * 10)
+    # env = lmdb.open(lmdb_save_path, map_size=data_size * 2)
 
     #### write data to lmdb
     pbar = util.ProgressBar(len(all_img_list))
@@ -121,6 +126,7 @@ def general_image_folder(opt):
     resolutions = []
     for idx, (path, key) in enumerate(zip(all_img_list, keys)):
         pbar.update('Write {}'.format(key))
+        # print(path, key)
         key_byte = key.encode('ascii')
         data = dataset[key] if read_all_imgs else cv2.imread(path, cv2.IMREAD_UNCHANGED)
         if data.ndim == 2:
@@ -365,7 +371,8 @@ def REDS(mode):
     data_size_per_img = cv2.imread(all_img_list[0], cv2.IMREAD_UNCHANGED).nbytes
     print('data size per image is: ', data_size_per_img)
     data_size = data_size_per_img * len(all_img_list)
-    env = lmdb.open(lmdb_save_path, map_size=data_size * 10)
+    # env = lmdb.open(lmdb_save_path, map_size=data_size * 10)
+    env = lmdb.open(lmdb_save_path, map_size=data_size * 2)
 
     #### write data to lmdb
     pbar = util.ProgressBar(len(all_img_list))

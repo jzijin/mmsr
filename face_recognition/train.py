@@ -10,10 +10,10 @@ import time
 from config import Config
 from torch.optim.lr_scheduler import StepLR
 from test import *
-from torchvision.models.resnet import resnet18
+from torchvision.models.resnet import resnet34
 
-def save_model(model, save_path, name, iter_cnt):
-    save_name = os.path.join(save_path, name + '_' + str(iter_cnt) + '.pth')
+def save_model(model, save_path, name, iter_cnt, ii):
+    save_name = os.path.join(save_path, name + '_' + str(iter_cnt) + '_iters_' + str(ii)+ '.pth')
     torch.save(model.state_dict(), save_name)
     return save_name
 
@@ -32,11 +32,12 @@ if __name__ == '__main__':
 
 
     criterion = FocalLoss(gamma=2)
-    model = resnet18()
-    model.conv1 = nn.Conv2d(6, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
-    model.fc = nn.Linear(512, 512, bias=True)
+    model = resnet34(pretrained=True)
+    # model.conv1 = nn.Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    # model.fc = nn.Linear(512, 512, bias=True)
 
-    metric_fc = ArcMarginProduct(512, opt.num_classes, s=30, m=0.5, easy_margin=opt.easy_margin)
+    metric_fc = ArcMarginProduct(1000, opt.num_classes, s=30, m=0.5, easy_margin=opt.easy_margin)
+    # model.load_state_dict(torch.load(opt.pretrain_model))
     print(model)
     print(metric_fc)
     model.to(device)
@@ -45,7 +46,7 @@ if __name__ == '__main__':
                                                                     lr=opt.lr, weight_decay=opt.weight_decay)
     scheduler = StepLR(optimizer, step_size=opt.lr_step, gamma=0.1)
     start = time.time()
-    for i in range(opt.max_epoch):
+    for i in range(opt.start_epoch, opt.max_epoch+1):
         scheduler.step()
         model.train()
         for ii, data in enumerate(trainloader):
@@ -73,9 +74,9 @@ if __name__ == '__main__':
                 time_str = time.asctime(time.localtime(time.time()))
                 print('{} train epoch {} iter {} {} iters/s loss {} acc {}'.format(time_str, i, ii, speed, loss.item(), acc))
                 start = time.time()
-        if i % opt.save_interval == 0 or i == opt.max_epoch:
-            save_model(model, opt.checkpoints_path, opt.backbone, i)
+            if iters % opt.save_interval == 0 or i == opt.max_epoch:
+                save_model(model, opt.checkpoints_path, opt.backbone, i, iters)
+                model.eval()
+                acc = lfw_test(model, img_paths, identity_list, opt.lfw_test_list, opt.test_batch_size)
 
-        model.eval()
-        acc = lfw_test(model, img_paths, identity_list, opt.lfw_test_list, opt.test_batch_size)
 

@@ -60,9 +60,9 @@ for test_loader in test_loaders:
         # save images
         suffix = opt['suffix']
         if suffix:
-            save_img_path = osp.join(dataset_dir, img_name + suffix + '.png')
+            save_img_path = osp.join(dataset_dir, img_name + suffix + '.jpg')
         else:
-            save_img_path = osp.join(dataset_dir, img_name + '.png')
+            save_img_path = osp.join(dataset_dir, img_name + '.jpg')
         util.save_img(sr_img, save_img_path)
 
         # calculate PSNR and SSIM

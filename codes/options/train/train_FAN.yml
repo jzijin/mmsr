@@ -39,7 +39,7 @@ network_D:
 path:
   pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/pretrained_models/FANX4.pth
   strict_load: true
-  resume_state: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/005_FANx4_DIV2K/training_state/98000.state
+  resume_state: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/005_FANx4_DIV2K/training_state/133000.state
 
 #### training settings: learning rate scheme, loss
 train:

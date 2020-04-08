@@ -96,12 +96,32 @@ class Dataset(data.Dataset):
         # data = torch.cat([data, data2], 1)
         # print(data.size())
         # label = np.int32(int(splits[1])-1)
-        img = img[:, :, [2, 1, 0]]
-        img = torch.from_numpy(np.ascontiguousarray(np.transpose(img, (2, 0, 1)))).float()
+
+        mod_scale = 4
+        up_scale = 4
+        width = int(np.floor(img.shape[1] / mod_scale))
+        height = int(np.floor(img.shape[0] / mod_scale))
+        # modcrop
+        if len(img.shape) == 3:
+            image_HR = img[0:mod_scale * height, 0:mod_scale * width, :]
+        else:
+            image_HR = img[0:mod_scale * height, 0:mod_scale * width]
+
+        # LR
+        image_LR = util.imresize_np(image_HR, 1 / up_scale, True)
+        # bic
+        # image_Bic = util.imresize_np(image_LR, up_scale, True)
+        img_GT = image_HR[:, :, [2, 1, 0]]
+        img_LR = image_LR[:, :, [2, 1, 0]]
+
+        img_GT = torch.from_numpy(np.ascontiguousarray(np.transpose(img_GT, (2, 0, 1)))).float()
+        img_LR = torch.from_numpy(np.ascontiguousarray(np.transpose(img_LR, (2, 0, 1)))).float()
+        # print(img_GT.size())
+        # print(img_LR.size())
         # print(img)
         # print(label)
         # exit(0)
-        return img, label
+        return img_LR, img_GT,  label
         # return data, label
         # print(index)
         # return 1, 1

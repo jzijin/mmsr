@@ -7,16 +7,16 @@ crop_border: ~  # crop border when evaluation. If None(~), crop the scale pixels
 gpu_ids: [0]
 
 datasets:
-  #test_1:  # the 1st test dataset
-    #name: test_x4
-    #mode: LQGT
-    #dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4_256/HR/X4
-    #dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4_256/LR/X4
-   test_2:  # the 2st test dataset
-     name: celeba
-     mode: LQGT
-     dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/DIV2K/DIV2K800_sub
-     dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/DIV2K/DIV2K800_sub_bicLRx4
+  test_1:  # the 1st test dataset
+    name: test_x4
+    mode: LQGT
+    dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4_256/HR/X4
+    dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4_256/LR/X4
+   #test_2:  # the 2st test dataset
+     #name: test
+     #mode: LQGT
+     #dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/DIV2K/DIV2K800_sub
+     #dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/DIV2K/DIV2K800_sub_bicLRx4
   # test_2:  # the 2st test dataset
   #   name: set14
   #   mode: LQGT
@@ -50,4 +50,4 @@ network_G:
 
 #### path
 path:
-  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/experiments/008_IncNetx4_2/models/232000_G.pth
+  pretrain_model_G: /home/jzijin/windows/e/code/ubuntu_code/bysj/code/mmsr/face_recognition/checkpoints/SRIncNet_0_iters_6000.pth
