@@ -28,10 +28,10 @@ datasets:
     #dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/urban100/HR/X4
     #dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/urban100/LR/X4
   test_5:  # the 1st test dataset
-    name: test_x4_256
+    name: tmp
     mode: LQGT
-    dataroot_GT: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4_256/HR/X4
-    dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/test_x4_256/LR/X4
+    dataroot_GT: ~
+    dataroot_LQ: /home/jzijin/code/bysj/code/mmsr/datasets/tmp
    #test_2:  # the 2st test dataset
      #name: set14
      #mode: LQGT
